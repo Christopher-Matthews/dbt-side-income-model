@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+
+  - name: app_stats
+    schema: RAW_DB
+    database: bold-artifact-312304
+    tables: 
+      - name: raw_app_ratings
+      - name: raw_business_stats
+      - name: raw_hours_worked
+      - name: raw_job
+      - name: raw_miles_driven
+      - name: raw_payouts
+
+  - name: stock_stats
+    schema: RAW_DB
+    database: bold-artifact-312304
+    tables:
+      - name: raw_portfolio_holdings
