@@ -1,0 +1,96 @@
+
+version: 2
+
+models:
+
+    - name: stg_job_mileage
+      description: "staging table for side income mileage"
+      columns:
+        - name: mileage_id
+          description: "unique id for the total mileage driven for a given job title for the day"
+          tests:
+            - unique
+            - not_null
+        - name: job_title_id
+          description: "id for the job title driven"
+          tests:
+            - not_null
+        - name: mileage_date
+          description: "date mileage was tracked"
+          tests:
+            - not_null
+        - name: total_mileage
+          description: "total mileage driven for a job on a day"
+          tests:
+            - not_null
+
+    - name: stg_job_payouts
+      description: "staging table for side income payouts"
+      columns:
+        - name: payout_id
+          description: "payout id for an individual service offered to a client"
+          tests:
+            - unique
+            - not_null
+        - name: job_title_id
+          description: "unique id for the job title of a service offered"
+          tests:
+            - not_null
+            # TODO: add a test to enforce relationship with the job table
+        - name: completed_date
+          description: "date of job completion"
+          tests:
+            - not_null
+        - name: business_service
+          description: "name of service provided to the customer or business name if food delivered"
+          tests:
+            - not_null
+        - name: std_earnings
+          description: "base pay before tips and bonus"
+          tests:
+            - not_null
+        - name: bonus_earnings
+          description: "additional earnings: usually indicates extra service provided or demand for service was high"
+          tests:
+            - not_null
+        - name: tip_earnings
+          description: "generous customers leave a tip for rideshare/delivery service, scumbags don't"
+          tests:
+            - not_null
+        - name: other_earnings
+          description: "misc earnings while active, could include: cancelation fees, non-job associated bonuses etc..."
+        - name: completion_notes
+          description: "notes taken to provide clerity on an obscure or non-standard payout"
+
+    - name: stg_robinhood_transactions
+      description: "staging table for robinhood transactions"
+      columns:
+        - name: rh_id
+          description: 'unique transaction id for robinhood'
+          tests:
+            - unique
+            - not_null
+        - name: ticker_symbol
+          description: 'stock ticker symbol'
+          tests:
+            - not_null
+        - name: purchase_date
+          description: 'day a certain ticker symbol was purchased'
+          tests:
+            - not_null
+        - name: qt_share_purchased
+          description: 'total number of shares purchased in the transaction'
+          tests:
+            - not_null
+        - name: avg_price
+          description: 'avg share price for a transaction block'
+          tests:
+            - not_null
+        - name: cum_quantity_owned
+          description: 'total number shares currently owned for symbol at date'
+          tests:
+            - not_null
+        - name: cost_basis
+          description: 'average price of purchase over all purchases after current transaction'
+          tests:
+            - not_null
