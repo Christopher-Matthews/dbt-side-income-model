@@ -3,6 +3,120 @@ version: 2
 
 models:
 
+    - name: stg_job_app_ratings
+      description: "staging table for app ratings"
+      columns:
+        - name: ratings_id
+          description: "unique id of ratings at the start of a work day"
+          tests:
+            - unique
+            - not_null
+        - name: job_title_id
+          description: "unique id of the job performed"
+          tests:
+            - not_null
+        - name: ratings_date
+          description: "date during which specific ratings showed on app"
+          tests:
+            - not_null
+        - name: star_rating
+          description: "overall # stars. Summary of rating"
+          tests:
+            - not_null
+        - name: acceptance_rating
+          description: "doordash stat: # deliveries shown that you accept"
+          tests:
+            - not_null
+        - name: completion_rating
+          description: "doordash stat: % of last 100 deliveries you complete after accepting"
+          tests:
+            - not_null
+        - name: on_time_rating
+          description: "doordash stat: % of your last 100 deliveries you completed on time or early"
+          tests:
+            - not_null
+        - name: friendliness_rating
+          description: "lyft stat: # of passengers that rated you as being friendly"
+          tests:
+            - not_null
+        - name: driving_rating
+          description: "lyft stat: # of passengers that rated your driving as good"
+          tests:
+            - not_null
+        - name: car_rating
+          description: "lyft stat: # of passengers that rated your car as being nice and clean"
+          tests:
+            - not_null
+        - name: above_beyond_rating
+          description: "lyft stat: # of passengers that rated you as going above and beyond (whatever that means)"
+          tests:
+            - not_null
+
+    - name: stg_job_business_stats
+      description: "staging table for stats on business delivered or service provided"
+      columns:
+        - name: business_id
+          description: "unique id of business food picked up from or service delivered"
+          tests:
+            - unique
+            - not_null
+        - name: business_name
+          description: "unique name of business food picked up from or service delivered"
+          tests:
+            - unique
+            - not_null
+        - name: business_star_rating
+          description: "ratings a business recieved from users on the user facing app (not driver app; what users see)"
+        - name: num_business_rating
+          description: "# of ratings a business recieved from users"
+        - name: business_price_rating
+          description: "# dollar signs ($) users see when placing order: 1 $ is cheapest"
+        - name: business_food_type
+          description: "crude labeling of typical food served at a restauraunt/business"
+
+    - name: stg_job_hours_worked
+      description: "staging table for hours worked on a particula day in a particular app"
+      columns:
+        - name: hours_worked_id
+          description: "unique id of hours worked on a day in an app"
+          tests:
+            - unique
+            - not_null
+        - name: job_title_id
+          description: "unique id of service provided"
+          tests:
+            - not_null
+        - name: work_date
+          description: "date of work"
+          tests:
+            - not_null
+        - name: hours_worked
+          description: "# hours worked on a day in an app"
+          tests:
+            - not_null
+        - name: minutes_worked
+          description: "# minutes worked on a day in an app"
+          tests:
+            - not_null
+        - name: total_time_worked
+          description: "total time worked in user friendly format (decimal)"
+          tests:
+            - not_null
+
+    - name: stg_job_job
+      description: "staging table for job titles"
+      columns:
+        - name: job_title_id
+          description: "unique id of service provided"
+          tests:
+            - unique
+            - not_null
+        - name: service_title
+          description: "unique name of service provided"
+          tests:
+            - unique
+            - not_null
+
     - name: stg_job_mileage
       description: "staging table for side income mileage"
       columns:
