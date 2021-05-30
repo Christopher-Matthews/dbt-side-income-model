@@ -208,3 +208,69 @@ models:
           description: 'average price of purchase over all purchases after current transaction'
           tests:
             - not_null
+
+    - name: stg_stock_arcc
+      description: "staging table for arcc stock data loaded from google finance"
+      columns:
+        - name: ticker_symbol
+          description: 'ticker symbol for stock in question'
+          tests:
+            - not_null
+        - name: price_date
+          description: 'date stock info is provided for'
+          tests:
+            - unique
+            - not_null
+        - name: open_price
+          description: 'price stock opened at on this day'
+          tests:
+            - not_null
+        - name: high_price
+          description: 'highest price stock was on this day'
+          tests:
+            - not_null
+        - name: low_price
+          description: 'lowest price stock was on this day'
+          tests:
+            - not_null
+        - name: close_price
+          description: 'closing price of stock on this day'
+          tests:
+            - not_null
+        - name: daily_volume
+          description: '# shares traded for this ticker on this day'
+          tests:
+            - not_null
+
+    - name: stg_stock_spyd
+      description: "staging table for arcc stock data loaded from google finance"
+      columns:
+        - name: ticker_symbol
+          description: 'ticker symbol for stock in question'
+          tests:
+            - not_null
+        - name: price_date
+          description: 'date stock info is provided for'
+          tests:
+            - unique
+            - not_null
+        - name: open_price
+          description: 'price stock opened at on this day'
+          tests:
+            - not_null
+        - name: high_price
+          description: 'highest price stock was on this day'
+          tests:
+            - not_null
+        - name: low_price
+          description: 'lowest price stock was on this day'
+          tests:
+            - not_null
+        - name: close_price
+          description: 'closing price of stock on this day'
+          tests:
+            - not_null
+        - name: daily_volume
+          description: '# shares traded for this ticker on this day'
+          tests:
+            - not_null
