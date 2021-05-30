@@ -18,3 +18,6 @@ sources:
     database: bold-artifact-312304
     tables:
       - name: raw_portfolio_holdings
+      - name: raw_arcc_stock_data
+      - name: raw_spyd_stock_data
+
