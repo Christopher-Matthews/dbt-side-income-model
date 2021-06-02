@@ -1,0 +1,16 @@
+version: 2
+
+models:
+
+    - name: core_dim_date
+      description: "date spine table with every date since start date"
+      columns:
+        - name: date_day
+          description: "unique day since 2021-03-01"
+          tests:
+            - unique
+            - not_null
+        - name: day_of_week
+          description: "day of the week"
+          tests:
+            - not_null
