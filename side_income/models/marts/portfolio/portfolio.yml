@@ -1,0 +1,62 @@
+version: 2
+
+models:
+
+    - name: int_portfolio_arcc_price
+      description: "historical stock prices for ARCC"
+      columns:
+        - name: date_day
+          description: "unique day since 2021-03-01"
+          tests:
+            - unique
+            - not_null
+        - name: day_of_week
+          description: "day of the week monday-sunday"
+          tests:
+            - not_null
+        - name: ticker_symbol
+          description: "stock ticker symbol"
+          tests:
+            - not_null
+        - name: close_price
+          description: "price the ticker symbol closed at on a day"
+          tests:
+            - not_null
+
+    - name: int_portfolio_cum_holding
+      description: "cumulative portfolio holdings in robinhood by ticker symbol and day"
+      columns:
+        - name: ticker_symbol
+          description: "stock ticker symbol"
+          tests:
+            - not_null
+        - name: purchase_date
+          description: "date stock of a ticker symbol was purchased"
+          tests:
+            - not_null
+        - name: cum_quantity_owned
+          description: "cumulative quantity owned in the account of a ticker symbol end of day"
+          tests:
+            - not_null
+
+    - name: int_portfolio_spyd_price
+      description: "historical stock prices for SPYD"
+      columns:
+        - name: date_day
+          description: "unique day since 2021-03-01"
+          tests:
+            - unique
+            - not_null
+        - name: day_of_week
+          description: "day of the week monday-sunday"
+          tests:
+            - not_null
+        - name: ticker_symbol
+          description: "stock ticker symbol"
+          tests:
+            - not_null
+        - name: close_price
+          description: "price the ticker symbol closed at on a day"
+          tests:
+            - not_null
+        
