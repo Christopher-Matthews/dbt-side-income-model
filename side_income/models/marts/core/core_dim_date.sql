@@ -3,7 +3,7 @@ with date_spine as (
   select 
     date_day
   from 
-    unnest(generate_date_array('2015-12-23', '2016-01-09')) as date_day
+    unnest(generate_date_array('2021-03-01', current_date())) as date_day
 ),
 
 add_weekday as (
