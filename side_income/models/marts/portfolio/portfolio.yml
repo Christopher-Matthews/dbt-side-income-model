@@ -149,4 +149,17 @@ models:
           description: "running total position size of ticker SPYD in $ USD"
           tests:
             - not_null
+
+    - name: portfolio_running_total_position
+      description: "running total positions size of both SPYD and ARCC over time"
+      columns:
+        - name: date_day
+          description: "unique day since 2021-03-01"
+          tests:
+            - unique
+            - not_null
+        - name: total_position
+          description: "running total position size of ARCC and SPYD combined in $ USD"
+          tests:
+            - not_null
  
