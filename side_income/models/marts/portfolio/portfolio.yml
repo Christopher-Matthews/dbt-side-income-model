@@ -107,4 +107,46 @@ models:
           description: "price the ticker symbol closed at on a day"
           tests:
             - not_null
-        
+    
+    - name: portfolio_running_arcc_position
+      description: "running total positions size of ARCC over time"
+      columns:
+        - name: date_day
+          description: "unique day since 2021-03-01"
+          tests:
+            - unique
+            - not_null
+        - name: day_of_week
+          description: "day of the week monday-sunday"
+          tests:
+            - not_null
+        - name: ticker_symbol
+          description: "stock ticker symbol"
+          tests:
+            - not_null
+        - name: total_running_position
+          description: "running total position size of ticker ARCC in $ USD"
+          tests:
+            - not_null
+
+    - name: portfolio_running_spyd_position
+      description: "running total positions size of SPYD over time"
+      columns:
+        - name: date_day
+          description: "unique day since 2021-03-01"
+          tests:
+            - unique
+            - not_null
+        - name: day_of_week
+          description: "day of the week monday-sunday"
+          tests:
+            - not_null
+        - name: ticker_symbol
+          description: "stock ticker symbol"
+          tests:
+            - not_null
+        - name: total_running_position
+          description: "running total position size of ticker SPYD in $ USD"
+          tests:
+            - not_null
+ 
