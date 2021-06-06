@@ -1,0 +1,38 @@
+version: 2
+
+models:
+
+    - name: int_jobs_daily_earning_by_service
+      description: "daily earnings aggregates by service"
+      columns:
+        - name: completed_date
+          description: "date the earnings were aggregated on by service"
+          tests:
+            - not_null
+        - name: service_title
+          description: "name of the service provided/ platform earnings made on"
+          tests:
+            - not_null
+        - name: std_earnings
+          description: "aggregated base payouts for a service during the course of the day"
+          tests:
+            - not_null
+        - name: bonus_earnings
+          description: "aggregated bonus payouts for a service during the course of 
+                        the day (ususally due to high demand on platform)"
+          tests:
+            - not_null
+        - name: tip_earnings
+          description: "aggregated tip payouts for a service during the course of 
+                        the day (only evil customers don't tip!)"
+          tests:
+            - not_null
+        - name: other_earnings
+          description: "aggregated 'other' payouts for a service during the course of 
+                        the day (usually a cancelation fee or additional payout)"
+          tests:
+            - not_null
+        - name: total_earnings
+          description: "std + tips + bonus + other earnings on a day in a platform"
+          tests:
+            - not_null
