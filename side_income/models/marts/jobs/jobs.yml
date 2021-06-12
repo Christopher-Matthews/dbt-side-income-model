@@ -36,3 +36,79 @@ models:
           description: "std + tips + bonus + other earnings on a day in a platform"
           tests:
             - not_null
+
+    - name: int_jobs_running_doordash_earnings
+      description: "running total earnings all time on doordash"
+      columns:
+        - name: date_day
+          description: "date the earnings were aggregated on"
+          tests:
+            - unique
+            - not_null
+        - name: day_of_week
+          description: "day of week: Monday-Sunday"
+          tests:
+            - not_null
+        - name: service_title
+          description: "name of the service or app money made on"
+          tests:
+            - not_null
+        - name: running_total_earnings
+          description: "all-time running earnings on doordash $ USD"
+          tests:
+            - not_null
+
+    - name: int_jobs_running_lyft_earnings
+      description: "running total earnings all time on lyft"
+      columns:
+        - name: date_day
+          description: "date the earnings were aggregated on"
+          tests:
+            - unique
+            - not_null
+        - name: day_of_week
+          description: "day of week: Monday-Sunday"
+          tests:
+            - not_null
+        - name: service_title
+          description: "name of the service or app money made on"
+          tests:
+            - not_null
+        - name: running_total_earnings
+          description: "all-time running earnings on lyft $ USD"
+          tests:
+            - not_null
+
+    - name: jobs_running_total_earnings
+      description: "running total earnings all time on all services"
+      columns:
+        - name: date_day
+          description: "date the earnings were aggregated on"
+          tests:
+            - unique
+            - not_null
+        - name: day_of_week
+          description: "day of week: Monday-Sunday"
+          tests:
+            - not_null
+        - name: running_total_earnings
+          description: "all-time running earnings on all apps $ USD"
+          tests:
+            - not_null
+
+    - name: jobs_running_total_earnings_vs_portfolio
+      description: "running total earnings all time on all services vs market returns"
+      columns:
+        - name: date_day
+          description: "date the earnings were aggregated on"
+          tests:
+            - unique
+            - not_null
+        - name: total_position
+          description: "total portfolio position on rh"
+          tests:
+            - not_null
+        - name: running_total_earnings
+          description: "all-time running earnings on all apps $ USD"
+          tests:
+            - not_null

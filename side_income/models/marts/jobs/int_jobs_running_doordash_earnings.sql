@@ -1,11 +1,11 @@
-with lyft_earning as (
+with doordash_earning as (
   select 
       completed_date
     , total_earnings
   from 
     {{ ref('int_jobs_daily_earning_by_service') }}
   where 
-    service_title = 'Lyft'
+    service_title = 'Doordash'
 ),
 
 dates as (
@@ -21,8 +21,8 @@ joined_earnings as (
   from 
     dates 
   left join 
-    lyft_earning on 
-      dates.date_day = lyft_earning.completed_date
+    doordash_earning on 
+      dates.date_day = doordash_earning.completed_date
 ),
 
 running_earning as ( 
@@ -39,7 +39,7 @@ from
 select 
     date_day
   , day_of_week
-  , 'Lyft'                                            as service_title
+  , 'Doordash'                                            as service_title
   , running_total_earnings
 from 
   running_earning
