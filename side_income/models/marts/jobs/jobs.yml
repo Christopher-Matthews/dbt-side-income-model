@@ -36,6 +36,11 @@ models:
           description: "std + tips + bonus + other earnings on a day in a platform"
           tests:
             - not_null
+        - name: total_jobs_completed
+          description: "number of trips/jobs for the day 
+                        (excludes arbitrary bonuses or cancelations)"
+          tests:
+            - not_null
 
     - name: int_jobs_running_doordash_earnings
       description: "running total earnings all time on doordash"
@@ -79,6 +84,19 @@ models:
           tests:
             - not_null
 
+    - name: jobs_completed_jobs_by_service_agg
+      description: "total number of jobs completed all-time for a service"
+      columns:
+        - name: service_title
+          description: "name of service provided"
+          tests:
+            - unique
+            - not_null
+        - name: total_jobs_completed
+          description: "aggregate number of lifetime jobs completed"
+          tests:
+            - not_null
+    
     - name: jobs_running_total_earnings
       description: "running total earnings all time on all services"
       columns:
