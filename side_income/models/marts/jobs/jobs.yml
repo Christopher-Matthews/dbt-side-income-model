@@ -96,6 +96,36 @@ models:
           description: "aggregate number of lifetime jobs completed"
           tests:
             - not_null
+
+    - name: jobs_dollars_per_hour_agg
+      description: "lifetime side hustle $/Hour"
+      columns:
+        - name: lifetime_dollars_per_hour
+          description: "total lifetime earnings divided by hours worked"
+          tests:
+            - unique
+            - not_null
+
+    - name: jobs_hourly_stats_by_service
+      description: "hourly stats by service"
+      columns:
+        - name: completed_date
+          description: "date service completed on"
+          tests:
+            - unique
+            - not_null
+        - name: service_title
+          description: "name of service completed"
+          tests:
+            - not_null
+        - name: dollars_per_hour
+          description: "money made USD divided by the hours worked on that day"
+          tests:
+            - not_null
+        - name: dollars_per_mile
+          description: "money made USD divided by the miles driven on that day"
+          tests:
+            - not_null
     
     - name: jobs_running_total_earnings
       description: "running total earnings all time on all services"
