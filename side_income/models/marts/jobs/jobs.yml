@@ -130,3 +130,12 @@ models:
           description: "all-time running earnings on all apps $ USD"
           tests:
             - not_null
+
+    - name: jobs_total_earnings
+      description: "lifetime earnings on sidegigs"
+      columns:
+        - name: total_lifetime_earnings
+          description: "total combined earnings over all side gigs"
+          tests:
+            - unique
+            - not_null
