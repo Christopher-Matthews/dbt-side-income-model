@@ -144,6 +144,26 @@ models:
           tests:
             - not_null
           
+    - name: jobs_rolling_avg_stats_by_service
+      description: "rolling average for $/hour and $/mile"
+      columns:
+        - name: day_index
+          description: "order rank of day: 1 is the first day driving for a service"
+          tests:
+            - not_null
+        - name: service_title
+          description: "name of job where service was provided"
+          tests:
+            - not_null
+        - name: rolling_4_dph_avg
+          description: "4 period rolling average of $/hour"
+          tests:
+            - not_null
+        - name: rolling_4_dpm_avg
+          description: "4 period rolling average of $/mile"
+          tests:
+            - not_null
+
     - name: jobs_running_total_earnings
       description: "running total earnings all time on all services"
       columns:
