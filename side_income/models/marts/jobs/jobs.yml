@@ -126,7 +126,24 @@ models:
           description: "money made USD divided by the miles driven on that day"
           tests:
             - not_null
-    
+
+    - name: jobs_percent_tips_by_service
+      description: "percent of jobs that saw a tip upon completion"
+      columns:
+        - name: service_title
+          description: "title of service provided"
+          tests:
+            - unique
+            - not_null
+        - name: avg_tip_amount
+          description: "average amount tipped by service when customers tip"
+          tests:
+            - not_null
+        - name: percent_tippers
+          description: "percent of jobs that saw a tip upon completion"
+          tests:
+            - not_null
+          
     - name: jobs_running_total_earnings
       description: "running total earnings all time on all services"
       columns:
