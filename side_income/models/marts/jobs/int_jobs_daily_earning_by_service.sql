@@ -16,17 +16,24 @@ total_payouts_by_job as (
     select 
           payouts.completed_date
         , job_titles.service_title 
-        , sum(payouts.std_earnings) as std_earnings
-        , sum(payouts.bonus_earnings) as bonus_earnings
-        , sum(payouts.tip_earnings) as tip_earnings
-        , sum(payouts.other_earnings) as other_earnings
+        , sum(payouts.std_earnings)                 as std_earnings
+        , sum(payouts.bonus_earnings)               as bonus_earnings
+        , sum(payouts.tip_earnings)                 as tip_earnings
+        , sum(payouts.other_earnings)               as other_earnings
         , round( 
             (sum(payouts.std_earnings) +
                 sum(payouts.bonus_earnings) +
                 sum(payouts.tip_earnings) +
                 sum(payouts.other_earnings))
             , 2
-            ) as total_earnings
+            )                                       as total_earnings
+        , sum(
+            case 
+                when (payouts.std_earnings > 0) 
+                    then 1 
+                else 0 
+            end
+            )                                       as total_jobs_completed 
     from 
         payouts
     left join  

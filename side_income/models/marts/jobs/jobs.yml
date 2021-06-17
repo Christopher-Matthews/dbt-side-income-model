@@ -36,6 +36,11 @@ models:
           description: "std + tips + bonus + other earnings on a day in a platform"
           tests:
             - not_null
+        - name: total_jobs_completed
+          description: "number of trips/jobs for the day 
+                        (excludes arbitrary bonuses or cancelations)"
+          tests:
+            - not_null
 
     - name: int_jobs_running_doordash_earnings
       description: "running total earnings all time on doordash"
@@ -79,6 +84,66 @@ models:
           tests:
             - not_null
 
+    - name: jobs_completed_jobs_by_service_agg
+      description: "total number of jobs completed all-time for a service"
+      columns:
+        - name: service_title
+          description: "name of service provided"
+          tests:
+            - unique
+            - not_null
+        - name: total_jobs_completed
+          description: "aggregate number of lifetime jobs completed"
+          tests:
+            - not_null
+
+    - name: jobs_dollars_per_hour_agg
+      description: "lifetime side hustle $/Hour"
+      columns:
+        - name: lifetime_dollars_per_hour
+          description: "total lifetime earnings divided by hours worked"
+          tests:
+            - unique
+            - not_null
+
+    - name: jobs_hourly_stats_by_service
+      description: "hourly stats by service"
+      columns:
+        - name: completed_date
+          description: "date service completed on"
+          tests:
+            - unique
+            - not_null
+        - name: service_title
+          description: "name of service completed"
+          tests:
+            - not_null
+        - name: dollars_per_hour
+          description: "money made USD divided by the hours worked on that day"
+          tests:
+            - not_null
+        - name: dollars_per_mile
+          description: "money made USD divided by the miles driven on that day"
+          tests:
+            - not_null
+
+    - name: jobs_percent_tips_by_service
+      description: "percent of jobs that saw a tip upon completion"
+      columns:
+        - name: service_title
+          description: "title of service provided"
+          tests:
+            - unique
+            - not_null
+        - name: avg_tip_amount
+          description: "average amount tipped by service when customers tip"
+          tests:
+            - not_null
+        - name: percent_tippers
+          description: "percent of jobs that saw a tip upon completion"
+          tests:
+            - not_null
+          
     - name: jobs_running_total_earnings
       description: "running total earnings all time on all services"
       columns:
@@ -111,4 +176,13 @@ models:
         - name: running_total_earnings
           description: "all-time running earnings on all apps $ USD"
           tests:
+            - not_null
+
+    - name: jobs_total_earnings
+      description: "lifetime earnings on sidegigs"
+      columns:
+        - name: total_lifetime_earnings
+          description: "total combined earnings over all side gigs"
+          tests:
+            - unique
             - not_null
