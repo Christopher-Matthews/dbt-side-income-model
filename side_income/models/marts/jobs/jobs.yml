@@ -84,6 +84,28 @@ models:
           tests:
             - not_null
 
+    - name: jobs_avg_payout_by_business_rank
+      description: "payouts by restaurant category/drive service etc"
+      columns:
+        - name: completed_date
+          description: "date of service completion"
+          tests:
+            - not_null
+        - name: total_earnings
+          description: "standard earnings + tips plus any bonuses"
+          tests:
+            - not_null
+        - name: service_title
+          description: "name of service or app I worked on"
+          tests:
+            - not_null
+        - name: job_class
+          description: "ranking of the service level provided $ for price ranking
+                        of a restaurant for Doordash and Standard/Lux for Lyft and 
+                        other rideshare services"
+          tests:
+            - not_null        
+
     - name: jobs_completed_jobs_by_service_agg
       description: "total number of jobs completed all-time for a service"
       columns:
