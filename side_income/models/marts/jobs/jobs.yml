@@ -220,6 +220,19 @@ models:
           tests:
             - not_null
 
+    - name: jobs_top_ten_businesses
+      description: "top 10 average earners for doordash"
+      columns:
+        - name: business_service
+          description: "name of the business that food was picked up from"
+          tests:
+            - unique
+            - not_null
+        - name: avg_restaurant_payout
+          description: "average payout of restaurant all-time (including tips)"
+          tests:
+            - not_null
+
     - name: jobs_total_earnings
       description: "lifetime earnings on sidegigs"
       columns:
