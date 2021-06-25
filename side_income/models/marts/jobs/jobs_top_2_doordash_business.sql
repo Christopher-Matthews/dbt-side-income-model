@@ -1,5 +1,5 @@
 
-with top_3_businesses as ( 
+with top_n_businesses as ( 
   select 
       row_number() over (
         order by avg_restaurant_payout desc
@@ -9,7 +9,7 @@ with top_3_businesses as (
     {{ ref('jobs_top_ten_businesses') }}
   order by 
     avg_restaurant_payout desc 
-  limit 2
+  limit 10
 ),
 
 business_stats as (
@@ -21,7 +21,7 @@ business_stats as (
 
 final as ( 
   select 
-      top_3_businesses.*
+      top_n_businesses.*
     , business_stats.business_food_type
     , business_stats.business_star_rating
     , business_stats.num_business_rating
@@ -35,9 +35,9 @@ final as (
         else 'NO RATING FOUND'
         end as restaurant_price_rating
   from 
-    top_3_businesses
+    top_n_businesses
     join business_stats on 1=1
-        and top_3_businesses.business_service = business_stats.business_name
+        and top_n_businesses.business_service = business_stats.business_name
 )
 
 select 

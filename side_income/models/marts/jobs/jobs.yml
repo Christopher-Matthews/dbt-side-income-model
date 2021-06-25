@@ -240,17 +240,12 @@ models:
         - name: business_star_rating
           description: "how many stars the restaurant had on consumer 
                         doordash app at time of delivery"
-          tests:
-            - not_null
         - name: num_business_rating
           description: "how many customer's rated the restaurant on the 
                         doordash app at time of delivery"
-          tests:
-            - not_null
         - name: restaurant_price_rating
           description: "price rating ($, $$, or $$$)"
           tests:
-            - not_null
 
     - name: jobs_top_ten_businesses
       description: "top 10 average earners for doordash"
