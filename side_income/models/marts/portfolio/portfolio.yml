@@ -107,6 +107,15 @@ models:
           description: "price the ticker symbol closed at on a day"
           tests:
             - not_null
+
+    - name: portfolio_current_position
+      description: "latest combined portfolio size in robinhood"
+      columns:
+        - name: current_position
+          description: "current aggregate position in robinhood"
+          tests:
+            - unique
+            - not_null
     
     - name: portfolio_running_arcc_position
       description: "running total positions size of ARCC over time"

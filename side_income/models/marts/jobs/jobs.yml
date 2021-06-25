@@ -220,6 +220,46 @@ models:
           tests:
             - not_null
 
+    - name: jobs_top_2_doordash_business
+      description: "profile of top doordash businesses to deliver for"
+      columns:
+        - name: business_rank
+          description: "relative rank of business with respect to earnings"
+          tests:
+            - unique
+            - not_null
+        - name: business_service
+          description: "name of restaurant delivered from"
+          tests:
+            - unique
+            - not_null
+        - name: business_food_type
+          description: "an unscientific attempt at classifying food"
+          tests:
+            - not_null
+        - name: business_star_rating
+          description: "how many stars the restaurant had on consumer 
+                        doordash app at time of delivery"
+        - name: num_business_rating
+          description: "how many customer's rated the restaurant on the 
+                        doordash app at time of delivery"
+        - name: restaurant_price_rating
+          description: "price rating ($, $$, or $$$)"
+          tests:
+
+    - name: jobs_top_ten_businesses
+      description: "top 10 average earners for doordash"
+      columns:
+        - name: business_service
+          description: "name of the business that food was picked up from"
+          tests:
+            - unique
+            - not_null
+        - name: avg_restaurant_payout
+          description: "average payout of restaurant all-time (including tips)"
+          tests:
+            - not_null
+
     - name: jobs_total_earnings
       description: "lifetime earnings on sidegigs"
       columns:
