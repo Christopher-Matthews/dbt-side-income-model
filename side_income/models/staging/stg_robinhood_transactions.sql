@@ -1,6 +1,6 @@
 with clean_rh_transactions as (
   select 
-      robinhoodID           as rh_id
+      row_number() over()   as rh_id
     , symbol                as ticker_symbol
     , date_purchased        as purchase_date
     , quantity_purchased    as qt_share_purchased
@@ -10,7 +10,7 @@ with clean_rh_transactions as (
   from
     {{source('stock_stats', 'raw_portfolio_holdings')}}
   where 
-    robinhoodID is not null
+    symbol is not null
 )
 
 select 
